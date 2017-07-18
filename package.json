@@ -1,0 +1,29 @@
+{
+  "name": "@klangoo/magnetapiclient",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Klangoo/MagnetApiClient.Node.git"
+  },
+  "keywords": [
+    "Magnet",
+    "Api",
+    "Client",
+    "Klangoo",
+    "Api",
+    "Client",
+    "Klangoo",
+    "Magnet"
+  ],
+  "author": "Klangoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Klangoo/MagnetApiClient.Node/issues"
+  },
+  "homepage": "https://github.com/Klangoo/MagnetApiClient.Node#readme"
+}
