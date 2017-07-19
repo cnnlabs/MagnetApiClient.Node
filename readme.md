@@ -68,7 +68,7 @@ function getArticle(articleUID) {
 	request.format = "json";
   
 	//instance of the magnetapiclient 
-	var MagnetAPIClient = require('magnetapiclient');
+	var MagnetAPIClient = require("@klangoo/magnetapiclient");
 	var _magnetAPIClient = new MagnetAPIClient(ENDPOINT_URI, CALK, SECRET_KEY);
 
 	try {
@@ -108,7 +108,7 @@ function getArticle(articleUID) {
 	request.format = "json";
   
 	//instance of the magnetapiclient 
-	var MagnetAPIClient = require('magnetapiclient');
+	var MagnetAPIClient =  require("@klangoo/magnetapiclient");
 	var _magnetAPIClient = new MagnetAPIClient(ENDPOINT_URI, CALK, SECRET_KEY);
 
 	try {
