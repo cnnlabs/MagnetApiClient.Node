@@ -37,13 +37,13 @@ Magnet offers online publishers and digital content providers with the following
 
 ## Install
 
-To use MagnetApiClient in your NodeJS project, you can either <a href="https://github.com/Klangoo/MagnetApiClient.Node">download the Magnet API Library directly from our Github repository</a> or, if you have the Node package manager installed, you can grab them automatically by running
+To use MagnetApiClient in your NodeJS project, you can either <a href="https://github.com/Klangoo/MagnetApiClient.Node">download the Magnet API Library directly from our Github repository</a> and reference it in your project or, if you have the Node package manager installed, you can download it automatically by running
 
 ```
 $ npm install @klangoo/magnetapiclient
 ```
 
-Once you have the Magnet API Client properly referenced in your project, you can include calls to them in your code.
+Once you have the Magnet API Client properly referenced in your project, you can start sending calls to the API in your code.
 For sample implementations, check the [news agency sample](https://github.com/Klangoo/MagnetApiClient.Node/blob/master/newsagencysample.js).
 
 ## Dependencies
