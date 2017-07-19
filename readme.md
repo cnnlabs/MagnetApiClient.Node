@@ -131,4 +131,4 @@ function getArticle(articleUID) {
 }
 ```
 
-You can find an example of all of the API calls here [here](https://github.com/Klangoo/MagnetApiClient.Node/blob/master/newsagencysample.js).
+You can find an example implementation for all of the API calls here [here](https://github.com/Klangoo/MagnetApiClient.Node/blob/master/newsagencysample.js).
