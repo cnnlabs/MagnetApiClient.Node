@@ -20,7 +20,7 @@ Magnet offers online publishers and digital content providers with the following
 - Highlight Named-Entities
 - Entity Listing
 - Entity Pages
-[Read More] (http://www.klangoo.com/Engagement.aspx).
+[Read More](http://www.klangoo.com/Engagement.aspx).
 
 [Book a demo with our sales team now!](mailto:sales@klangoo.com)
 
@@ -29,9 +29,9 @@ Magnet offers online publishers and digital content providers with the following
 
 ## Prerequisites
 
-- [NodeJS] (https://nodejs.org/en/download/)
-- An API Key Provided by [Klangoo] (http://klangoo.com)
-- An API Secret Provided by [Klangoo] (http://klangoo.com)
+- [NodeJS](https://nodejs.org/en/download/)
+- An API Key Provided by [Klangoo](http://klangoo.com)
+- An API Secret Provided by [Klangoo](http://klangoo.com)
 
 
 ## Install
