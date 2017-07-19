@@ -92,6 +92,7 @@ function getArticle(articleUID) {
 }
 ```
 
+## Add Article
 The same applies for posting or updating an article. following is an example for adding an article:
 
 ```javascript
