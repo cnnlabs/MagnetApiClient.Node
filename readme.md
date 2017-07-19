@@ -22,7 +22,7 @@ Magnet offers online publishers and digital content providers with the following
 - Entity Pages
 [Read More] (http://www.klangoo.com/Engagement.aspx).
 
-[Book a demo with our sales team now!](sales@klangoo.com)
+[Book a demo with our sales team now!](mailto:sales@klangoo.com)
 
 <a name="installation"></a>
 # Installation
