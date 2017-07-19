@@ -1,7 +1,7 @@
 {
   "name": "@klangoo/magnetapiclient",
   "version": "1.0.0",
-  "description": "",
+  "description": "Magnet API client driver for NodeJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
