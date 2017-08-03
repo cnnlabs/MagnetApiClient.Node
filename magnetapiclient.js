@@ -143,13 +143,17 @@ class MagnetAPIClient {
         return queryString;
     }
 
-    PercentEncodeRfc3986(str) {
-
-        str = encodeURIComponent(str);
-        str = str.replace("'", "%27").replace("(", "%28").replace(")", "%29").replace("*", "%2A").replace("!", "%21").replace("%7e", "~").replace("+", "%20");
-
-        return str;
-    }
+	PercentEncodeRfc3986(str) {
+		str = encodeURIComponent(str);
+		str = str.replace(/'/g , "%27");
+		str = str.replace(/\(/g , "%28");
+		str = str.replace(/\)/g , "%29");
+		str = str.replace(/\*/g , "%2A");
+		str = str.replace(/!/g , "%21");
+		str = str.replace(/%7e/gi , "~");
+		str = str.replace(/\+/g , "%20");
+		return str;
+	}
 
     CharIsLetter(char) {
         char = char.toLowerCase();
@@ -236,11 +240,16 @@ class MagnetSigner {
     }
 
     PercentEncodeRfc3986(str) {
-
-        str = encodeURIComponent(str);
-        str = str.replace("'", "%27").replace("(", "%28").replace(")", "%29").replace("*", "%2A").replace("!", "%21").replace("%7e", "~").replace("+", "%20");
-        return str;
-    }
+		str = encodeURIComponent(str);
+		str = str.replace(/'/g , "%27");
+		str = str.replace(/\(/g , "%28");
+		str = str.replace(/\)/g , "%29");
+		str = str.replace(/\*/g , "%2A");
+		str = str.replace(/!/g , "%21");
+		str = str.replace(/%7e/gi , "~");
+		str = str.replace(/\+/g , "%20");
+		return str;
+	}
 
     CharIsLetter(char) {
         char = char.toLowerCase();
