@@ -1,13 +1,11 @@
 const urlParser = require('url');
+const fetch = require('request-promise');
 const utils = require('./lib/utils');
 const MagnetSigner = require('./lib/signer');
-const fetch = require('request-promise');
 
 class MagnetAPIClient {
     constructor(endpointUri, calk, secretKey) {
         this._calk = null;
-        this._serverAddress = null;
-        this._endpoint = null;
         this._magnetSigner = null;
         this._proxy = null;
         this._calk = calk;
@@ -19,9 +17,9 @@ class MagnetAPIClient {
         }
     }
 
-    PrepareRequest(methodName, request) {
+    prepareRequest(methodName, request) {
         //add calk to request, if it does not exist.
-        if (!this.RequestHasCalk(request)) {
+        if (!this.requestHasCalk(request)) {
             //request is Query String
             if (typeof request == 'string') {
                 if (request.trim() == '') {
@@ -35,26 +33,26 @@ class MagnetAPIClient {
         }
     }
 
-    GetQueryString(methodName, request, requestMethod, signRequest) {
+    getQueryString(methodName, request, requestMethod, signRequest) {
         let queryString;
         if (signRequest && this._magnetSigner != undefined && this._magnetSigner != null) {
-            queryString = this._magnetSigner.GetSignedQueryString(methodName, request, requestMethod);
+            queryString = this._magnetSigner.getSignedQueryString(methodName, request, requestMethod);
         } else if (typeof request == 'object') {
-            queryString = this.ConstructQueryString(request);
+            queryString = this.constructQueryString(request);
         } else if (typeof request == 'string') {
             queryString = request;
         }
         return queryString;
     }
 
-    CallWebMethod(methodName, request, requestMethod, signRequest = true) {
-        this.PrepareRequest(methodName, request);
-        const queryString = this.GetQueryString(methodName, request, requestMethod, signRequest);
+    callWebMethod(methodName, request, requestMethod, signRequest = true) {
+        this.prepareRequest(methodName, request);
+        const queryString = this.getQueryString(methodName, request, requestMethod, signRequest);
 
         let upperRequestMethod = requestMethod.toUpperCase();
         const requestObj = {
             method: upperRequestMethod,
-            uri: `${this._serverAddress}/${this._endpoint}/${(upperRequestMethod == 'GET' ? `${methodName}?${queryString}` : methodName)}`,
+            uri: `https://${this._serverAddress}/${this._endpoint}/${(upperRequestMethod == 'GET' ? `${methodName}?${queryString}` : methodName)}`,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
@@ -65,7 +63,7 @@ class MagnetAPIClient {
         return fetch(requestObj);
     }
 
-    RequestHasCalk(request) {
+    requestHasCalk(request) {
         //request is Query String
         if (typeof request == 'string') {
             let queryStringLower = request.toLowerCase();
@@ -86,14 +84,14 @@ class MagnetAPIClient {
         return false;
     }
 
-    ConstructQueryString(request) {
+    constructQueryString(request) {
         let queryString = '';
         if (request && Object.keys(request).length > 0) {
             for (let property in request) {
                 if (request.hasOwnProperty(property)) {
-                    queryString += utils.PercentEncodeRfc3986(property);
+                    queryString += utils.percentEncodeRfc3986(property);
                     queryString += '=';
-                    queryString += utils.PercentEncodeRfc3986(request[property]);
+                    queryString += utils.percentEncodeRfc3986(request[property]);
                     queryString += '&';
                 }
             }
