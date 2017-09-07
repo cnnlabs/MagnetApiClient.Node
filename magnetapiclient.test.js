@@ -1,14 +1,29 @@
-const expect = require('expect'); const nock = require('nock'); 
+const expect = require('expect');
+const nock = require('nock'); 
+
 var MagnetAPIClient = require('./magnetapiclient');
 
-const ENDPOINT_URI = "http://magnetapi.klangoo.com/NewsAgencyService.svc";
-const CALK = "ENTER_YOUR_CALK";
-const SECRET_KEY = "ENTER_YOUR_SECRET_KEY";
-const articleUID = "2017/03/28/example-api-usage";
 
 
+describe('MagnetAPIClient', function () {
 
-describe('MagnetAPIClient', function() {
+    const ENDPOINT_URI = "http://magnetapi.klangoo.com/NewsAgencyService.svc";
+    const CALK = "ENTER_YOUR_CALK";
+    const SECRET_KEY = "ENTER_YOUR_SECRET_KEY";
+    const articleUID = "2017/03/28/example-api-usage";
+
+    let client;
+    let api;
+
+    beforeEach(function () {
+
+        client = new MagnetAPIClient(ENDPOINT_URI, CALK, SECRET_KEY);
+        api = nock(ENDPOINT_URI, {
+            reqheaders: {
+                'content-type': 'application/x-www-form-urlencoded'
+            }
+        });
+    });
 
     it('should be able to add an article', function (done) {
 
@@ -22,13 +37,8 @@ describe('MagnetAPIClient', function() {
             language: 'en',
             format: 'json'
         };
-        const client = new MagnetAPIClient(ENDPOINT_URI, CALK, SECRET_KEY);
 
-        nock(ENDPOINT_URI, {
-            reqheaders: {
-                'content-type': 'application/x-www-form-urlencoded'
-            }
-        }).post('/AddArticle', function (body) {
+        api.post('/AddArticle', function (body) {
 
             return body.calk === CALK &&
                    body.articleUID === request.articleUID &&
@@ -61,13 +71,8 @@ describe('MagnetAPIClient', function() {
             language: 'en',
             format: 'json'
         };
-        const client = new MagnetAPIClient(ENDPOINT_URI, CALK, SECRET_KEY);
 
-        nock(ENDPOINT_URI, {
-            reqheaders: {
-                'content-type': 'application/x-www-form-urlencoded'
-            }
-        }).post('/UpdateArticle', function (body) {
+        api.post('/UpdateArticle', function (body) {
 
             return body.calk === CALK &&
                    body.articleUID === request.articleUID &&
@@ -94,13 +99,8 @@ describe('MagnetAPIClient', function() {
             articleUID,
             format: 'json'
         };
-        const client = new MagnetAPIClient(ENDPOINT_URI, CALK, SECRET_KEY);
 
-        nock(ENDPOINT_URI, {
-            reqheaders: {
-                'content-type': 'application/x-www-form-urlencoded'
-            }
-        }).post('/DeleteArticle', function (body) {
+        api.post('/DeleteArticle', function (body) {
 
             return body.calk === CALK &&
                    body.articleUID === articleUID &&
@@ -125,13 +125,8 @@ describe('MagnetAPIClient', function() {
             articleUID,
             format: 'json'
         };
-        const client = new MagnetAPIClient(ENDPOINT_URI, CALK, SECRET_KEY);
 
-        nock(ENDPOINT_URI, {
-            reqheaders: {
-                'content-type': 'application/x-www-form-urlencoded'
-            }
-        }).get('/GetArticle').query(function (q) {
+        api.get('/GetArticle').query(function (q) {
 
             return q.calk === CALK &&
                    q.articleUID === articleUID &&
@@ -157,14 +152,9 @@ describe('MagnetAPIClient', function() {
             orderByDate: 'true',
             format: 'json'
         };
-        const client = new MagnetAPIClient(ENDPOINT_URI, CALK, SECRET_KEY);
 
 
-        nock(ENDPOINT_URI, {
-            reqheaders: {
-                'content-type': 'application/x-www-form-urlencoded'
-            }
-        }).get('/ShowIndex').query(function (q) {
+        api.get('/ShowIndex').query(function (q) {
 
             return q.calk === CALK &&
                    q.format === request.format &&
