@@ -30,7 +30,16 @@ describe('MagnetAPIClient', function() {
             }
         }).post('/AddArticle', function (body) {
 
-            return body.calk === CALK && body.articleUID === articleUID;
+            return body.calk === CALK &&
+                   body.articleUID === request.articleUID &&
+                   body.format === request.format &&
+                   body.language === request.language &&
+                   body.source === request.source &&
+                   body.text === request.text &&
+                   body.title === request.title &&
+                   body.url === request.url &&
+                   typeof body.timestamp !== 'undefined' &&
+                   typeof body.signature !== 'undefined';
         }).reply(200, { status: 'OK' });
 
 
@@ -60,7 +69,14 @@ describe('MagnetAPIClient', function() {
             }
         }).post('/UpdateArticle', function (body) {
 
-            return body.calk === CALK && body.articleUID === articleUID;
+            return body.calk === CALK &&
+                   body.articleUID === request.articleUID &&
+                   body.format === request.format &&
+                   body.language === request.language &&
+                   body.updateDate === request.updateDate &&
+                   body.text === request.text &&
+                   typeof body.timestamp !== 'undefined' &&
+                   typeof body.signature !== 'undefined';
         }).reply(200, { status: 'OK' });
 
         client.CallWebMethod('UpdateArticle', request, 'POST', function (data) {
